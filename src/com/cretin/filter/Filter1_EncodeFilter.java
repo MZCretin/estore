@@ -14,8 +14,8 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-@WebFilter( filterName = "EncodeFilter", urlPatterns = "/*" )
-public class EncodeFilter implements Filter {
+@WebFilter( filterName = "Filter1_EncodeFilter", urlPatterns = "/*" )
+public class Filter1_EncodeFilter implements Filter {
     private FilterConfig config = null;
     private ServletContext context = null;
     private String encode = null;
