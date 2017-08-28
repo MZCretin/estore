@@ -9,4 +9,18 @@ public interface UserService {
      * @param user 封装了用户的User Bean
      */
     void register(User user);
+
+    /**
+     * 激活用户
+     * @param activeCode 激活码
+     */
+    User active(String activeCode);
+
+    /**
+     * 根据用户名和密码查找用户
+     * @param username 用户名
+     * @param password 密码
+     * @return 返回找到的用户
+     */
+    User getUserByNameAndPsw(String username, String password);
 }
