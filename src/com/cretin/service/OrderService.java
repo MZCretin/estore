@@ -2,7 +2,7 @@ package com.cretin.service;
 
 import com.cretin.domain.Order;
 
-public interface OrderService {
+public interface OrderService extends Service{
     /**
      * 添加订单
      *

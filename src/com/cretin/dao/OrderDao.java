@@ -6,7 +6,7 @@ import com.cretin.domain.OrderItem;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public interface OrderDao {
+public interface OrderDao extends Dao{
     /**
      * 向数据库中插入订单数据
      *

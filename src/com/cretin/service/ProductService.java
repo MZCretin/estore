@@ -4,7 +4,7 @@ import com.cretin.domain.Product;
 
 import java.util.List;
 
-public interface ProductService {
+public interface ProductService extends Service{
     /**
      * 添加产品
      * @param prod 产品信息bean

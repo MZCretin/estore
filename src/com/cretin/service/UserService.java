@@ -2,7 +2,7 @@ package com.cretin.service;
 
 import com.cretin.domain.User;
 
-public interface UserService {
+public interface UserService extends Service{
     /**
      * 注册用户的方法
      *

@@ -4,7 +4,7 @@ import com.cretin.domain.User;
 
 import java.sql.Connection;
 
-public interface UserDao {
+public interface UserDao extends Dao{
     /**
      * 根据用户名查找用户
      * @param username 用户名
