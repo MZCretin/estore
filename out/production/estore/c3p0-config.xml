@@ -3,8 +3,8 @@
   <default-config>
     <property name="driverClass">com.mysql.jdbc.Driver</property>
     <property name="jdbcUrl">jdbc:mysql:///estore?characterEncoding=UTF-8</property>
-    <property name="user">estore</property>
-    <property name="password">estore</property>
+    <property name="user">root</property>
+    <property name="password"></property>
   </default-config>
 </c3p0-config>
 	

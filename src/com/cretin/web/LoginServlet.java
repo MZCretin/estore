@@ -3,6 +3,7 @@ package com.cretin.web;
 import com.cretin.domain.User;
 import com.cretin.factory.BasicFactory;
 import com.cretin.service.UserService;
+import com.cretin.util.MD5Utils;
 import com.cretin.util.TextUtils;
 
 import java.io.IOException;
@@ -37,7 +38,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             //查找用户
-            User user = service.getUserByNameAndPsw(username,password);
+            User user = service.getUserByNameAndPsw(username, MD5Utils.md5(password));
             if(user == null){
                 //用户名账号不匹配
                 request.setAttribute("msg","用户名和密码不匹配");

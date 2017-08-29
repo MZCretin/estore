@@ -3,6 +3,7 @@ package com.cretin.web;
 import com.cretin.domain.User;
 import com.cretin.factory.BasicFactory;
 import com.cretin.service.UserService;
+import com.cretin.util.MD5Utils;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -32,12 +33,13 @@ public class RegisterServlet extends HttpServlet {
             User user = new User();
             BeanUtils.populate(user, request.getParameterMap());
 
+            user.setPassword(MD5Utils.md5(request.getParameter("password")));
             //注册用户
             userService.register(user);
 
             //回到主页
             response.getWriter().write("注册成功，请到邮箱中进行激活(3s后自动回到主页)");
-            response.setHeader("Refresh","3;url=/index.jsp");
+            response.setHeader("Refresh", "3;url=/index.jsp");
         } catch ( Exception e ) {
             e.printStackTrace();
             throw new RuntimeException(e);
