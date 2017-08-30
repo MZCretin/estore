@@ -2,23 +2,20 @@ package com.cretin.dao;
 
 import com.cretin.domain.User;
 
-import java.sql.Connection;
-
 public interface UserDao extends Dao{
     /**
      * 根据用户名查找用户
      * @param username 用户名
-     * @param connection
      * @return 查到到的用户 如果找不到 返回null
      */
-    User findUserByName(String username, Connection connection);
+    User findUserByName(String username);
 
     /**
      * 添加用户的方法
      * @param user 被添加的用户
-     * @param connection
+     *
      */
-    void addUser(User user, Connection connection);
+    void addUser(User user);
 
     /**
      * 根据id删除用户
@@ -47,4 +44,12 @@ public interface UserDao extends Dao{
      * @return 找到的用户  没找到则返回null
      */
     User getUserByNameAndPsw(String username, String password);
+
+
+    /**
+     *  根据id查找用户
+     * @param user_id 用户id
+     * @return 返回用户
+     */
+    User findUserById(int user_id);
 }

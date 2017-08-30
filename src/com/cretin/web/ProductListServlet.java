@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "ProductListServlet", urlPatterns = "/ProductListServlet" )
 public class ProductListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductService service = BasicFactory.getFactory().getInstance(ProductService.class);
+        ProductService service = BasicFactory.getFactory().getService(ProductService.class);
         //查找所有的产品
         List<Product> list = service.getProductLists();
 

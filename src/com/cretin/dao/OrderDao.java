@@ -3,23 +3,37 @@ package com.cretin.dao;
 import com.cretin.domain.Order;
 import com.cretin.domain.OrderItem;
 
-import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
-public interface OrderDao extends Dao{
+public interface OrderDao extends Dao {
     /**
      * 向数据库中插入订单数据
      *
-     * @param connection 数据库连接
      * @param order 订单
      */
-    void addOrder(Connection connection, Order order) throws SQLException;
+    void addOrder(Order order) throws SQLException;
 
     /**
      * 向数据库中插入订单项数据
      *
-     * @param connection
      * @param orderItem 订单项
      */
-    void addOrderItem(Connection connection, OrderItem orderItem) throws SQLException;
+    void addOrderItem(OrderItem orderItem) throws SQLException;
+
+    /**
+     * 根据用户id查找所有该用户的所有订单
+     *
+     * @param user_id 用户id
+     * @return 所有订单组成的集合
+     */
+    List<Order> findOrderListByUserId(int user_id) throws SQLException;
+
+    /**
+     * 根据订单id查找所有的订单项
+     *
+     * @param order_id 订单id
+     * @return 返回所有的订单项
+     */
+    List<OrderItem> findOrderItems(String order_id) throws SQLException;
 }

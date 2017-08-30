@@ -2,12 +2,12 @@ package com.cretin.dao;
 
 import com.cretin.domain.Product;
 import com.cretin.util.DaoUtils;
+import com.cretin.util.TransactionManager;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -50,11 +50,11 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public void deleNum(Connection connection, String product_id, int buynum) throws SQLException {
+    public void deleNum(String product_id, int buynum) throws SQLException {
         String sql = "update products set pnum=pnum-? where id=? and pnum-?>=0";
-        QueryRunner queryRunner = new QueryRunner();
+        QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
         new QueryRunner();
-        int count = queryRunner.update(connection, sql, buynum, product_id, buynum);
+        int count = queryRunner.update(sql, buynum, product_id, buynum);
         if ( count <= 0 ) {
             throw new SQLException("库存不足");
         }

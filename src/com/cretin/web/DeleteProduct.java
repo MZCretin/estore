@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "DeleteProduct", urlPatterns = "/DeleteProduct" )
 public class DeleteProduct extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductService service = BasicFactory.getFactory().getInstance(ProductService.class);
+        ProductService service = BasicFactory.getFactory().getService(ProductService.class);
         //获取id 获取商品
         String id = request.getParameter("id");
         //删除商品

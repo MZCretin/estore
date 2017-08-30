@@ -46,7 +46,7 @@ public class Filter2_AutoLoginFilter implements Filter {
                 String username = resStr.split(":")[0];
                 String password = resStr.split(":")[1];
                 //登录
-                UserService service = BasicFactory.getFactory().getInstance(UserService.class);
+                UserService service = BasicFactory.getFactory().getService(UserService.class);
                 User userByNameAndPsw = service.getUserByNameAndPsw(username, password);
                 if(userByNameAndPsw!=null){
                     //登录成功

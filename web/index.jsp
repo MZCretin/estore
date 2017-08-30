@@ -24,6 +24,7 @@
     欢迎回来，${sessionScope.user.username}<br>
     <a href="${pageContext.request.contextPath}/addProduct.jsp">添加商品</a>
     <a href="${pageContext.request.contextPath}/ProductListServlet">产品列表</a>
+    <a href="${pageContext.request.contextPath}/OrderListServlet">订单列表</a>
     <a href="${pageContext.request.contextPath}/LogoutServlet">注销</a>
 </c:if>
 </body>

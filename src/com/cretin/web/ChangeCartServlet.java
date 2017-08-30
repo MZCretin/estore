@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "ChangeCartServlet", urlPatterns = "/ChangeCartServlet" )
 public class ChangeCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductService service = BasicFactory.getFactory().getInstance(ProductService.class);
+        ProductService service = BasicFactory.getFactory().getService(ProductService.class);
         //获取id
         String id = request.getParameter("id");
         //获取产品

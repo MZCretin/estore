@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class ProductServiceImpl implements ProductService {
-    private ProductDao productDao = BasicFactory.getFactory().getInstance(ProductDao.class);
+    private ProductDao productDao = BasicFactory.getFactory().getDao(ProductDao.class);
 
     @Override
     public void addProduct(Product prod) {

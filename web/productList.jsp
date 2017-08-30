@@ -21,9 +21,10 @@
                 <td width="40%"><a href="/ProductInfoServlet?id=${product.id}"><img
                         src="/ImageServlet?imgurl=${product.imgurls}"></a></td>
                 <td width="40%">
-                        ${product.name}<br>
-                        ${product.price }<br>
-                        ${product.category }
+                    商品名称：${product.name}<br>
+                    商品价格：${product.price }<br>
+                    商品分类：${product.category }<br>
+                    商品库存：${product.pnum}
                 </td>
                 <td width="20%">
                     <c:if test="${product.pnum>0}">

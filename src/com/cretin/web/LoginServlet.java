@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "LoginServlet", urlPatterns = "/LoginServlet" )
 public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService service = BasicFactory.getFactory().getInstance(UserService.class);
+        UserService service = BasicFactory.getFactory().getService(UserService.class);
         try {
             //获取账号和密码参数
             String username = request.getParameter("username");

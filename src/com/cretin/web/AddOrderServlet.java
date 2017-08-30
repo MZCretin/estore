@@ -10,6 +10,8 @@ import com.cretin.service.OrderService;
 import org.apache.commons.beanutils.BeanUtils;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.UndeclaredThrowableException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "AddOrderServlet", urlPatterns = "/AddOrderServlet" )
 public class AddOrderServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        OrderService orderService = BasicFactory.getFactory().getInstance(OrderService.class);
+        OrderService orderService = BasicFactory.getFactory().getService(OrderService.class);
         try {
             //将订单信息存入bean中
             Order order = new Order();
@@ -60,7 +62,14 @@ public class AddOrderServlet extends HttpServlet {
 
             //回到主页
             response.getWriter().write("订单生成成功，3s后返回主页，请去支付");
-            response.setHeader("Rerresh", "3;url=index.jsp");
+            response.setHeader("Refresh", "3;url=/index.jsp");
+        } catch ( UndeclaredThrowableException e ) {
+            e.printStackTrace();
+            if ( e.getUndeclaredThrowable() instanceof InvocationTargetException ) {
+                throw new RuntimeException((( InvocationTargetException ) e.getUndeclaredThrowable()).getTargetException());
+            } else {
+                throw new RuntimeException(e.getUndeclaredThrowable());
+            }
         } catch ( Exception e ) {
             e.printStackTrace();
             throw new RuntimeException(e);

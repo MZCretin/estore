@@ -17,7 +17,7 @@ public class ProductInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //获取id 查找商品
         String id = request.getParameter("id");
-        ProductService service = BasicFactory.getFactory().getInstance(ProductService.class);
+        ProductService service = BasicFactory.getFactory().getService(ProductService.class);
         Product product = service.getProductById(id);
         request.setAttribute("product",product);
         request.getRequestDispatcher("/productInfo.jsp").forward(request,response);

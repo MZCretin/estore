@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "RegisterServlet", urlPatterns = "/RegisterServlet" )
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        UserService userService = BasicFactory.getFactory().getInstance(UserService.class);
+        UserService userService = BasicFactory.getFactory().getService(UserService.class);
         try {
             //检验验证码
             String valiStr = request.getParameter("valistr");

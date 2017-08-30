@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet( name = "AddProductServlet", urlPatterns = "/AddProductServlet" )
 public class AddProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ProductService service = BasicFactory.getFactory().getInstance(ProductService.class);
+        ProductService service = BasicFactory.getFactory().getService(ProductService.class);
         try {
             String encode = getServletContext().getInitParameter("encode");
             Map<String, String> paramMap = new HashMap<String, String>();
