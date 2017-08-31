@@ -38,4 +38,28 @@ public class OrderDaoImpl implements OrderDao {
         QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
         return queryRunner.query(sql, new BeanListHandler<OrderItem>(OrderItem.class), order_id);
     }
+
+    @Override
+    public void delOrderItem(String id) {
+        String sql = "delete from orderitem where order_id = ?";
+        try {
+            QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
+            queryRunner.update(sql, id);
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void delOrder(String id) {
+        String sql = "delete from orders where id = ?";
+        try {
+            QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
+            queryRunner.update(sql, id);
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
 }

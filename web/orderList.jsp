@@ -23,6 +23,7 @@
         支付状态 :
         <c:if test="${olf.paystate == 0}">
             <font color="red">未支付</font>
+            <a href="/DeleteOrderServlet?id=${olf.id}">删除订单</a>
         </c:if>
         <c:if test="${olf.paystate != 0}">
             <font color="blue">已支付</font>

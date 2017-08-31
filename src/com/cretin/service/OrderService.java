@@ -21,6 +21,14 @@ public interface OrderService extends Service {
      * @param user_id 用户id
      * @return 所有订单信息组成的集合
      */
-    @Tran
     List<OrderListForm> getOrderListByUserId(int user_id);
+
+    /**
+     * 根据订单id删除订单
+     *
+     * @param id 订单id
+     */
+    @Tran
+    void deleteOrderById(String id);
+
 }

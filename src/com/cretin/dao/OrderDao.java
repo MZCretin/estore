@@ -36,4 +36,16 @@ public interface OrderDao extends Dao {
      * @return 返回所有的订单项
      */
     List<OrderItem> findOrderItems(String order_id) throws SQLException;
+
+    /**
+     * 删除订单项
+     * @param id 被删除的订单项的id
+     */
+    void delOrderItem(String id);
+
+    /**
+     * 删除订单
+     * @param id 被删除的订单id
+     */
+    void delOrder(String id);
 }

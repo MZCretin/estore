@@ -67,7 +67,6 @@ public class OrderServiceImpl implements OrderService {
                     Product product = productDao.getProductById(prodId);
                     prodMap.put(product, oi.getBuynum());
                 }
-                //设置金额 先不写 看下效果
                 orderListForm.setProdMap(prodMap);
                 orderListFormList.add(orderListForm);
             }
@@ -76,5 +75,24 @@ public class OrderServiceImpl implements OrderService {
             throw new RuntimeException(e);
         }
         return orderListFormList;
+    }
+
+    @Override
+    public void deleteOrderById(String id) {
+        try {
+            //1.根据id查询出所有订单项
+            List<OrderItem> list = orderDao.findOrderItems(id);
+            //2.遍历订单项,将对应prod_id的商品的库存加回去
+            for ( OrderItem item : list ) {
+                productDao.addPnum(item.getProduct_id(), item.getBuynum());
+            }
+            //3.删除订单项
+            orderDao.delOrderItem(id);
+            //4.删除订单
+            orderDao.delOrder(id);
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }

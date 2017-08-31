@@ -34,4 +34,11 @@ public interface ProductDao extends Dao{
      * @param buynum     被扣除的数量
      */
     void deleNum(String product_id, int buynum) throws SQLException;
+
+    /**
+     * 添加商品数量
+     * @param product_id 商品id
+     * @param buynum 添加的商品数量
+     */
+    void addPnum(String product_id, int buynum);
 }

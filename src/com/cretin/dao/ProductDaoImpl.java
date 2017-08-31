@@ -53,10 +53,21 @@ public class ProductDaoImpl implements ProductDao {
     public void deleNum(String product_id, int buynum) throws SQLException {
         String sql = "update products set pnum=pnum-? where id=? and pnum-?>=0";
         QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
-        new QueryRunner();
         int count = queryRunner.update(sql, buynum, product_id, buynum);
         if ( count <= 0 ) {
             throw new SQLException("库存不足");
+        }
+    }
+
+    @Override
+    public void addPnum(String product_id, int buynum) {
+        try {
+            String sql = "update products set pnum=pnum+? where id=?";
+            QueryRunner queryRunner = new QueryRunner(TransactionManager.getSource());
+            queryRunner.update(sql, buynum, product_id);
+        } catch ( Exception e ) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 }
